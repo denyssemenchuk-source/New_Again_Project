@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 5 - Table Component</title>
+  <link rel="stylesheet" href="src/style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-[#f9f9f9] p-4 md:p-8 text-gray-800">
+
+<div class="max-w-[1000px] mx-auto">
+
+  <div class="flex justify-between items-center mb-3 px-2">
+    <div class="text-[14px] text-gray-500">
+      0 selected
+    </div>
+    <div class="flex space-x-6 text-[14px] font-medium text-gray-700">
+      <button class="flex items-center hover:text-gray-900 transition-colors">
+        <svg class="w-8 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M.75 4.293h22.5M3.146 9.431h17.708M8.72 19.707h6.56m-9.737-5.138h12.914" />
+        </svg>
+        Sort by
+      </button>
+      <button class="flex items-center hover:text-gray-900 transition-colors">
+        <i class="fa-solid fa-ellipsis-vertical mr-2 text-gray-500"></i> Actions
+      </button>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="w-full text-left border-collapse whitespace-nowrap">
+        <thead>
+        <tr class="bg-white border-b border-gray-200 text-[13px] text-gray-500">
+          <th class="py-4 px-5 w-16">
+            <div class="flex items-center space-x-1.5 cursor-pointer">
+              <input type="checkbox" class="w-[15px] h-[15px] rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer">
+              <i class="fa-solid fa-chevron-down text-[10px] text-gray-400 mt-[2px]"></i>
+            </div>
+          </th>
+          <th class="py-4 px-4 font-normal">Name</th>
+          <th class="py-4 px-6 font-normal text-right">Properties</th>
+          <th class="py-4 px-4 font-normal text-center">Created by</th>
+          <th class="py-4 px-4 font-normal">Last updated</th>
+          <th class="py-4 px-4 w-12"></th>
+        </tr>
+        </thead>
+
+        <tbody class="text-[14px] text-gray-600">
+        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors group">
+          <td class="py-3 px-5">
+            <input type="checkbox" class="w-[15px] h-[15px] rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer">
+          </td>
+          <td class="py-3 px-4 font-medium text-gray-800">denver</td>
+          <td class="py-3 px-6 text-right">24</td>
+          <td class="py-3 px-4 text-center">Me</td>
+          <td class="py-3 px-4 text-gray-500">02/27/2026 at 1:41PM</td>
+          <td class="py-3 px-4 text-center">
+            <button class="text-gray-400 hover:text-gray-700 p-1"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+          </td>
+        </tr>
+
+        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors group">
+          <td class="py-3 px-5">
+            <input type="checkbox" class="w-[15px] h-[15px] rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer">
+          </td>
+          <td class="py-3 px-4 font-medium text-gray-800">test save</td>
+          <td class="py-3 px-6 text-right">10</td>
+          <td class="py-3 px-4 text-center">Me</td>
+          <td class="py-3 px-4 text-gray-500">02/10/2026 at 5:52PM</td>
+          <td class="py-3 px-4 text-center">
+            <button class="text-gray-400 hover:text-gray-700 p-1"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+          </td>
+        </tr>
+
+        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors group">
+          <td class="py-3 px-5">
+            <input type="checkbox" class="w-[15px] h-[15px] rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer">
+          </td>
+          <td class="py-3 px-4 font-medium text-gray-800">gggg</td>
+          <td class="py-3 px-6 text-right">10</td>
+          <td class="py-3 px-4 text-center">Me</td>
+          <td class="py-3 px-4 text-gray-500">02/04/2026 at 5:49PM</td>
+          <td class="py-3 px-4 text-center">
+            <button class="text-gray-400 hover:text-gray-700 p-1"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+          </td>
+        </tr>
+
+        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors group">
+          <td class="py-3 px-5">
+            <input type="checkbox" class="w-[15px] h-[15px] rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer">
+          </td>
+          <td class="py-3 px-4 font-medium text-gray-800">test full export</td>
+          <td class="py-3 px-6 text-right">4059</td>
+          <td class="py-3 px-4 text-center">Me</td>
+          <td class="py-3 px-4 text-gray-500">02/02/2026 at 11:19AM</td>
+          <td class="py-3 px-4 text-center">
+            <button class="text-gray-400 hover:text-gray-700 p-1"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+          </td>
+        </tr>
+
+        <tr class="hover:bg-gray-50 transition-colors group">
+          <td class="py-3 px-5">
+            <input type="checkbox" class="w-[15px] h-[15px] rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer">
+          </td>
+          <td class="py-3 px-4 font-medium text-gray-800">denver 1</td>
+          <td class="py-3 px-6 text-right">14</td>
+          <td class="py-3 px-4 text-center">Me</td>
+          <td class="py-3 px-4 text-gray-500">01/23/2026 at 9:20AM</td>
+          <td class="py-3 px-4 text-center">
+            <button class="text-gray-400 hover:text-gray-700 p-1"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="flex justify-between items-center p-4 border-t border-gray-200 text-[14px] text-gray-500 bg-white">
+      <div class="flex items-center">
+        Show
+        <div class="mx-2 px-3 py-1 border border-gray-200 rounded text-gray-700 font-medium bg-white cursor-pointer hover:bg-gray-50 transition-colors">
+          5
+        </div>
+        of 5 results
+      </div>
+      <div>
+        <button class="w-[30px] h-[30px] rounded-full border border-[#22c55e] text-[#22c55e] flex items-center justify-center font-medium hover:bg-green-50 transition-colors">
+          1
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
