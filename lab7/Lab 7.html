@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 4 - Subscription Plan & JS Tasks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center p-6 gap-8">
+
+<div class="relative bg-white w-full max-w-[340px] rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-transparent hover:border-black transition-colors duration-300 overflow-hidden">
+</div>
+
+<div class="bg-white w-full max-w-md p-6 rounded-xl shadow border border-gray-200">
+    <h2 class="text-xl font-bold mb-4">Завдання з JS</h2>
+
+    <div class="mb-6">
+        <h3 class="font-semibold mb-2">Знайти код округу:</h3>
+        <input type="text" id="county-input" placeholder="Baldwin County, Alabama" class="border p-2 rounded w-full mb-2">
+        <button id="search-btn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Знайти код</button>
+        <div id="result" class="mt-2 text-sm font-medium text-gray-700"></div>
+    </div>
+
+    <div class="mb-6 border-t pt-4">
+        <h3 class="font-semibold mb-2">Форма користувача:</h3>
+        <form id="user-form" class="flex flex-col gap-2">
+            <input type="text" id="first_name" placeholder="Ім'я" class="border p-2 rounded">
+            <input type="text" id="last_name" placeholder="Прізвище" class="border p-2 rounded">
+            <input type="email" id="email" placeholder="Email" class="border p-2 rounded">
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Відправити</button>
+        </form>
+    </div>
+
+    <div class="border-t pt-4">
+        <h3 class="font-semibold mb-2">Анімація:</h3>
+        <div id="elid"></div>
+        <div class="flex gap-2">
+            <button id="btn-left" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">Вліво</button>
+            <button id="btn-right" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">Вправо</button>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

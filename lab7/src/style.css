@@ -1,0 +1,11 @@
+@import "tailwindcss";
+#elid {
+    width: 50px;
+    height: 50px;
+    background-color: #3498db;
+    border-radius: 8px;
+    position: relative;
+    left: 0px;
+    transition: left 0.4s ease-in-out; /* Саме це робить рух плавним */
+    margin-bottom: 20px;
+}
