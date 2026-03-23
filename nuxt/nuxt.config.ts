@@ -2,8 +2,10 @@
 export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
-    '@nuxt/ui'
-  ],
+    '@nuxt/ui',
+    '@vueuse/nuxt'
+    ],
+
 
   devtools: {
     enabled: true
