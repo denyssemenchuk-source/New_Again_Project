@@ -6,6 +6,9 @@ export default defineNuxtConfig({
     '@vueuse/nuxt'
     ],
 
+colorMode: {
+      preference: 'light'
+    },
 
   devtools: {
     enabled: true
