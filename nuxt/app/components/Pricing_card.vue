@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-// Підказка для Tailwind CSS, щоб він не видаляв ці класи кольорів під час збірки.
-// Це необхідно, бо Tailwind не сканує папку server/ за замовчуванням.
 const tailwindSafelist = [
   'from-[#70e000]', 'to-[#00bbf9]',
   'from-[#00bbf9]', 'to-[#9b5de5]',
@@ -12,6 +10,17 @@ const tailwindSafelist = [
 const billingCycle = ref('annual')
 
 const { data: plans } = await useFetch('/api/products')
+
+// НОВА ФУНКЦІЯ: Перехід на сторінку оплати з параметрами
+const navigateToCheckout = (planName: string) => {
+  navigateTo({
+    path: '/checkout',
+    query: {
+      plan: planName.toLowerCase(),
+      billing: billingCycle.value
+    }
+  })
+}
 </script>
 
 <template>
@@ -71,7 +80,7 @@ const { data: plans } = await useFetch('/api/products')
             </div>
           </div>
 
-          <button class="w-full py-2.5 font-bold text-sm text-white rounded-md transition-all duration-500 mb-6 bg-gradient-to-r from-orange-400 via-pink-500 to-orange-400 bg-[length:200%_auto] hover:bg-right shadow-sm border-transparent">
+          <button @click="navigateToCheckout(plan.name)" class="w-full py-2.5 font-bold text-sm text-white rounded-md transition-all duration-500 mb-6 bg-gradient-to-r from-orange-400 via-pink-500 to-orange-400 bg-[length:200%_auto] hover:bg-right shadow-sm border-transparent cursor-pointer">
             Try It Free
           </button>
 
@@ -90,7 +99,3 @@ const { data: plans } = await useFetch('/api/products')
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>
