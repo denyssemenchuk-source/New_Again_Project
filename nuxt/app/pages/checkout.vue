@@ -10,9 +10,25 @@
       </NuxtLink>
 
       <h1 class="text-3xl font-bold text-gray-800 mb-3 tracking-tight">You're Almost In - Start Your 3-Day Free Trial Now!</h1>
-      <p class="text-gray-600 mb-10 text-[17px]">
+      <p class="text-gray-600 mb-6 text-[17px]">
         Set up your account to gain instant access! You won't be charged if you decide to cancel within 3 days
       </p>
+
+      <!-- Блок з інформацією про обрану підписку із Pinia Store -->
+      <div v-if="subscriptionStore.hasSelectedPlan" class="bg-green-50 border border-green-200 rounded-lg p-4 mb-8">
+        <div class="flex items-center gap-2 mb-2">
+          <svg class="w-5 h-5 text-[#70e000]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
+          </svg>
+          <span class="font-bold text-gray-800">Дані з Pinia Store:</span>
+        </div>
+        <p class="text-sm text-gray-600">
+          <span class="font-medium">План:</span> {{ subscriptionStore.planSummary?.name }} |
+          <span class="font-medium">Період:</span> {{ subscriptionStore.planSummary?.billingCycle }} |
+          <span class="font-medium">Ціна:</span> ${{ subscriptionStore.planSummary?.displayPrice }}/місяць |
+          <span class="font-medium">До сплати:</span> ${{ subscriptionStore.planSummary?.totalDue }}
+        </p>
+      </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-[340px_1fr] gap-8">
 
@@ -134,16 +150,23 @@ useHead({
   title: 'Checkout - Start Your Free Trial'
 })
 
+// Отримуємо subscription store
+const subscriptionStore = useSubscriptionStore()
+const { selectedPlan: storedPlan } = storeToRefs(subscriptionStore)
+
 // Отримуємо параметри з URL (наприклад, ?plan=business&billing=monthly)
 const route = useRoute()
 
-// Передаємо ці параметри до нашого API під час запиту
-const { data: plan } = await useFetch('/api/checkout-plan', {
+// Передаємо ці параметри до нашого API під час запиту (як fallback)
+const { data: apiFetchedPlan } = await useFetch('/api/checkout-plan', {
   query: {
     plan: route.query.plan || 'team', // Якщо напряму зайти на /checkout, за замовчуванням покаже Team
     billing: route.query.billing || 'annual'
   }
 })
+
+// Використовуємо план із store, якщо він є, інакше з API
+const plan = computed(() => storedPlan.value || apiFetchedPlan.value)
 
 const form = ref({
   cardNumber: '',
