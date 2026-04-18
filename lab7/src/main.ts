@@ -1,8 +1,8 @@
 import './style.css'
 
 // --- Завдання 2: Змінні ---
-let name: string = "Василь";
-let admin: string = name;
+let name = "Василь";
+let admin= name;
 console.log("Значення змінної admin:", admin);
 
 // --- Завдання 3: Робота з API (Fetch) ---
