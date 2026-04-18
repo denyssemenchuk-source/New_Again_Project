@@ -11,12 +11,18 @@ const billingCycle = ref('annual')
 
 const { data: plans } = await useFetch('/api/products')
 
-// НОВА ФУНКЦІЯ: Перехід на сторінку оплати з параметрами
-const navigateToCheckout = (planName: string) => {
+// Отримуємо subscription store
+const subscriptionStore = useSubscriptionStore()
+
+// НОВА ФУНКЦІЯ: Зберігаємо обраний план в store і переходимо на checkout
+const navigateToCheckout = (plan: any) => {
+  // Зберігаємо обраний план в Pinia store
+  subscriptionStore.selectPlan(plan, billingCycle.value as 'annual' | 'monthly')
+
   navigateTo({
     path: '/checkout',
     query: {
-      plan: planName.toLowerCase(),
+      plan: plan.name.toLowerCase(),
       billing: billingCycle.value
     }
   })
@@ -80,7 +86,7 @@ const navigateToCheckout = (planName: string) => {
             </div>
           </div>
 
-          <button @click="navigateToCheckout(plan.name)" class="w-full py-2.5 font-bold text-sm text-white rounded-md transition-all duration-500 mb-6 bg-gradient-to-r from-orange-400 via-pink-500 to-orange-400 bg-[length:200%_auto] hover:bg-right shadow-sm border-transparent cursor-pointer">
+          <button @click="navigateToCheckout(plan)" class="w-full py-2.5 font-bold text-sm text-white rounded-md transition-all duration-500 mb-6 bg-gradient-to-r from-orange-400 via-pink-500 to-orange-400 bg-[length:200%_auto] hover:bg-right shadow-sm border-transparent cursor-pointer">
             Try It Free
           </button>
 
