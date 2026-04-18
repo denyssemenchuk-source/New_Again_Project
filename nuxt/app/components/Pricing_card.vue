@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import {useSubscriptionStore} from "~/stores/useSubscriptionStore";
 
 const tailwindSafelist = [
   'from-[#70e000]', 'to-[#00bbf9]',
